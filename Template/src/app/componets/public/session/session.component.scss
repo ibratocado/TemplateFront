@@ -1,0 +1,16 @@
+.content-form{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 30px;
+}
+
+.content-footer{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 10px;
+}
+
+.content-loggin{
+  display: grid;
+  justify-content: center;
+}
