@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SessionComponent } from './componets/public/session/session.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtBearerInterceptor } from './interceptors/jwt-bearer.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -34,7 +34,8 @@ import { CookieService } from 'ngx-cookie-service';
     InputTextModule,
     PasswordModule,
     ProgressBarModule,
-    ToastModule
+    ToastModule,
+    HttpClientModule
   ], // Se tiene que poner en provedoires el interceptor y el servicio de las cookies
   providers: [
     { provide: HTTP_INTERCEPTORS,

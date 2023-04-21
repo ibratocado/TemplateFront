@@ -1,4 +1,7 @@
 export interface IAccountRequest {
-  count: string,
+  account: string
   pount: string
 }
+
+
+

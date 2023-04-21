@@ -11,14 +11,14 @@ export class BaseService {
   private path = environment.urls.urlApi;
   constructor(private clientHttp: HttpClient) { }
 
-  get(url: string, options?: any): Promise<any>{
+  get(url: string,optionsQuerry: any, optionsPath?: any): Promise<any>{
 
-    let final = `${url}/${options}`;
+    let final = `${url}/${optionsPath}`;
 
-    if(!options)
+    if(!optionsPath)
       final = `${url}`;
 
-    return lastValueFrom( this.clientHttp.get(this.path + final));
+    return lastValueFrom( this.clientHttp.get(this.path + final,optionsQuerry));
   }
 
   post(url: string,required: any): Promise<any>{

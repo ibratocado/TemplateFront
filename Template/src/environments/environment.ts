@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   urls:{
-    "urlApi": ""
+    "urlApi": "https://localhost:7067/api/",
+    "account": {
+      "postForVerify": "Account"
+    }
   }
 };
 
