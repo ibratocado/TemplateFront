@@ -1,28 +1,24 @@
 <p-toast position="top-center"></p-toast>
 <div class="content-loggin">
-  <p-card header="Inicio de Sesion" subheader="Ingresa tus Credenciales" [style]="{width: '360px'}" styleClass="p-card-shadow">
+  <p-card header="Inicio de Sesion" subheader="Ingresa tus Credenciales" class="card-form" styleClass="p-card-shadow">
 
     <form [formGroup]="formCount" class="content-form">
-      <div class="p-inputgroup">
-        <span class="p-inputgroup-addon">
-            <i class="pi pi-user"></i>
-        </span>
-        <span class="p-float-label">
-            <input formControlName="count" type="text" id="inputgroup" pInputText [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('count')}">
-            <label for="inputgroup">Usuario</label>
-        </span>
-      </div>
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input formControlName="count" type="text" id="inputgroup" pInputText [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('count')}">
+        <label for="inputgroup">Usuario</label>
+      </span>
 
-      <div class="p-inputgroup">
-        <span class="p-inputgroup-addon">
-            <i class="pi pi-key"></i>
-        </span>
-        <span class="p-float-label">
-          <input formControlName="pount" type="password" pPassword [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('pount')}"/>
-          <label for="inputgroup">Contraseña</label>
-        </span>
+      <div class="p-float-label">
+          <p-password
+            formControlName="pount"
+            [feedback]="false"
+            [toggleMask]="true"
+            styleClass="p-password p-component p-inputwrapper p-input-icon-right"
+            [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('pount')}">
+          </p-password>
+        <label for="inputgroup">Contraseña</label>
       </div>
-
     </form>
 
 

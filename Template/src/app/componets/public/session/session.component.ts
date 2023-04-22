@@ -16,8 +16,8 @@ export class SessionComponent implements OnInit {
 
   public progress = false;
   public formCount: FormGroup = new FormGroup({
-    count: new FormControl('',[Validators.required,Validators.minLength(5)]),
-    pount: new FormControl('',[Validators.required,Validators.minLength(8)])
+    count: new FormControl('',[Validators.required,Validators.minLength(3)]),
+    pount: new FormControl('',[Validators.required,Validators.minLength(3)])
   });
   constructor(private cookieService: CookieService,
     private route: Router,
@@ -33,6 +33,7 @@ export class SessionComponent implements OnInit {
       return;
     }
 
+    this.progress = true;
     let model: IAccountRequest = {
       account: this.formCount.controls['count'].value,
       pount: this.formCount.controls['pount'].value
@@ -44,9 +45,10 @@ export class SessionComponent implements OnInit {
       this.asiignation(data.respon.data);
     }
       )
-    .catch(err=>
-      this.messageService.add({severity: "error", summary: "Error", detail: "Error Conecction"})
-      );
+    .catch(err=>{
+      this.messageService.add({severity: "error", summary: "Error", detail: "Error Conecction"});
+      this.progress = false;
+    });
   }
 
   public validFormDataControl(prop: string){
@@ -65,7 +67,8 @@ export class SessionComponent implements OnInit {
       this.cookieService.set('token', data);
       this.cookieService.set('role',decode.Role);
       this.cookieService.set('count',decode.nameid);
-      //this.route.navigate(['/Log']);
+      this.route.navigate(['/Private']);
+      this.progress = false;
     }
   }
 

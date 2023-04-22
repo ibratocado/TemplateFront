@@ -11,12 +11,14 @@ export class SessionGuard implements CanActivate {
   constructor(private serviceCokie: CookieService,
     private router: Router
     ){}
+
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const cookie = this.serviceCokie.check('token');
       if(!cookie){
-        this.router.navigate(['/']);
+        this.router.navigate(['/Login']);
       }
       else{
 

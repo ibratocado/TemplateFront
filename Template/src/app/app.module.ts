@@ -11,18 +11,21 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import { MessageService } from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SessionComponent } from './componets/public/session/session.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { JwtBearerInterceptor } from './interceptors/jwt-bearer.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { PrivateModule } from './private/private.module';
+import { FormComponent } from './componets/private/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SessionComponent
+    SessionComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -35,12 +38,10 @@ import { CookieService } from 'ngx-cookie-service';
     PasswordModule,
     ProgressBarModule,
     ToastModule,
-    HttpClientModule
+    HttpClientModule,
+    PrivateModule
   ], // Se tiene que poner en provedoires el interceptor y el servicio de las cookies
   providers: [
-    { provide: HTTP_INTERCEPTORS,
-      useClass: JwtBearerInterceptor,
-      multi: true },
     CookieService,
     MessageService],
   bootstrap: [AppComponent]

@@ -1,0 +1,22 @@
+<p-table [value]="listData" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" dataKey="id"
+    [selection]="selectedData" (selectionChange)="onSelectionChange($event)" [selectAll]="selectAll" (selectAllChange)="onSelectAllChange($event)"
+    [paginator]="true" [rows]="recordsByPage" [totalRecords]="totalRecords" [loading]="loadingTable" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem"></th>
+        </tr>
+        <tr>
+            <th style="width: 3rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer>
+        <tr>
+            <td>
+                <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+<h1>hola</h1>

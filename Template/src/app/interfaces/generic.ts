@@ -7,3 +7,12 @@ export interface IGenericStructRespon<T> {
   message: string
   data: T
 }
+
+export interface IGenericPaginator<T> {
+  page: number
+  totalPages: number
+  totalRecords: number
+  recordsByPage: number
+  data: T
+}
+

@@ -6,11 +6,17 @@
 
 .content-footer{
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  justify-content: center;
   row-gap: 10px;
 }
 
 .content-loggin{
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.card-form{
   display: grid;
   justify-content: center;
 }
