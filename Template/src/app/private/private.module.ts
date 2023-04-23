@@ -7,10 +7,10 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
 import {ProgressBarModule} from 'primeng/progressbar';
-import {MessageService } from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
+import {DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef} from 'primeng/dynamicdialog';
 
 import { PrivateRoutingModule } from './private-routing.module';
 import { PrivateComponent } from './private.component';
@@ -19,6 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { JwtBearerInterceptor } from '../interceptors/jwt-bearer.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from '../componets/private/form/form.component';
 
 
 @NgModule({
@@ -38,13 +39,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     ToastModule,
     HttpClientModule,
     TableModule,
-    ToolbarModule
+    ToolbarModule,
+    DynamicDialogModule
   ],
+  entryComponents:[FormComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS,
       useClass: JwtBearerInterceptor,
       multi: true },
     CookieService,
-    MessageService]
+    DialogService,
+    DynamicDialogRef,
+    DynamicDialogConfig]
 })
 export class PrivateModule { }

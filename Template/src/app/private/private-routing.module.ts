@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TableComponent } from '../componets/private/table/table.component';
+import { PrivateComponent } from './private.component';
 
 const routes: Routes = [
-  {path:"", component: TableComponent,pathMatch: "full"}
+  {path:'',component: TableComponent},
 ];
 
 @NgModule({

@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+export class CookieGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown> {
 
-export class SessionGuard implements CanActivate, CanDeactivate<unknown> {
   constructor(private serviceCokie: CookieService,
     private router: Router
     ){}
@@ -16,30 +16,29 @@ export class SessionGuard implements CanActivate, CanDeactivate<unknown> {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const cookie = this.serviceCokie.check('token');
-      if(!cookie){
-        console.log(cookie)
-        this.router.navigate(['/']);
-      }
-      else{
-        return true;
-      }
-    return false;
-  }
 
-  canDeactivate(
-    component: unknown,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const cookie = this.serviceCokie.check('token');
-      console.log("3",cookie)
-      if(!cookie){
+      if(cookie){
+        console.log(cookie)
         this.router.navigate(['/Private']);
       }
       else{
         return true;
       }
     return false;
+
   }
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return true;
+  }
+  canDeactivate(
+    component: unknown,
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return true;
+  }
+
 }

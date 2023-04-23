@@ -8,7 +8,7 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
 import {ProgressBarModule} from 'primeng/progressbar';
-import { MessageService } from 'primeng/api';
+import {MessageService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
 
 

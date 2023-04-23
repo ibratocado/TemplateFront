@@ -1,22 +1,40 @@
-<p-table [value]="listData" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" dataKey="id"
-    [selection]="selectedData" (selectionChange)="onSelectionChange($event)" [selectAll]="selectAll" (selectAllChange)="onSelectAllChange($event)"
-    [paginator]="true" [rows]="recordsByPage" [totalRecords]="totalRecords" [loading]="loadingTable" >
+<p-toast position="top-center"></p-toast>
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <h2>Articulos</h2>
+  </div>
+
+  <div class="p-toolbar-group-right contentRig">
+    <button pButton pRipple type="button" icon="pi pi-plus"
+      (click)="showAdd()" label="Agregar" class="p-button-raised p-button-success"></button>
+    <button pButton pRipple type="button" icon="pi pi-trash"
+      (click)="validateLengthValues()" label="Eliminar" class="p-button-raised p-button-danger"></button>
+  </div>
+</p-toolbar>
+<p-table [value]="listData" [lazy]="true" (onPageChange)="loadData($event)" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" dataKey="id"
+[selection]="selectedData" (selectionChange)="onSelectionChange($event)" [selectAll]="selectAll" (selectAllChange)="onSelectAllChange($event)"
+[paginator]="true" [rows]="recordsByPage" [totalRecords]="totalRecords" pageLinkSize="totalPages" [loading]="loadingTable" >
     <ng-template pTemplate="header">
         <tr>
-            <th style="width: 3rem"></th>
-        </tr>
-        <tr>
-            <th style="width: 3rem">
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
+            <th style="width: 3rem"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+            <th>Articulo</th>
+            <th>Precio</th>
+            <th>Acciones</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-customer>
+    <ng-template pTemplate="body" let-data>
         <tr>
             <td>
-                <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+                <p-tableCheckbox [value]="data"></p-tableCheckbox>
+            </td>
+            <td>{{data.name}}</td>
+            <td>{{data.price}}</td>
+            <td class="container-acctions">
+              <button pButton pRipple type="button"
+                (click)="showDetails(data)" icon="pi pi-pencil" class="p-button-rounded p-button-outlined p-button-secondary"></button>
+              <button pButton pRipple type="button"
+                (click)="deleteOne(data.id)" icon="pi pi-times" class="p-button-rounded p-button-outlined p-button-danger"></button>
             </td>
         </tr>
     </ng-template>
 </p-table>
-<h1>hola</h1>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable({
@@ -11,14 +11,16 @@ export class BaseService {
   private path = environment.urls.urlApi;
   constructor(private clientHttp: HttpClient) { }
 
-  get(url: string,optionsQuerry: any, optionsPath?: any): Promise<any>{
+  get(url: string,optionsQuerry?: any, optionsPath?: any): Promise<any>{
 
     let final = `${url}/${optionsPath}`;
 
     if(!optionsPath)
-      final = `${url}`;
+      final = url;
 
-    return lastValueFrom( this.clientHttp.get(this.path + final,optionsQuerry));
+    return lastValueFrom( this.clientHttp.get(this.path + final, {
+      params: optionsQuerry,
+    }));
   }
 
   post(url: string,required: any): Promise<any>{
@@ -29,8 +31,10 @@ export class BaseService {
     return lastValueFrom( this.clientHttp.put(this.path + url,required));
   }
 
-  delete(url: string): Promise<any>{
-    return lastValueFrom( this.clientHttp.delete(this.path + url));
+  delete(url: string,options: any): Promise<any>{
+    let final = `${url}/${options}`;
+
+    return lastValueFrom( this.clientHttp.delete(this.path + final));
   }
 
 }

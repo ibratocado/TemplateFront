@@ -1,18 +1,18 @@
-<p-toast position="top-center"></p-toast>
+
 <div class="content-form">
-  <p-card subheader="Ingresa tus Credenciales" class="card-form" styleClass="p-card-shadow">
+  <p-card header="{{modelUpdate.id}}" subheader="{{subhead}}" class="card-form" styleClass="p-card-shadow">
 
     <form [formGroup]="formData" class="content-form">
       <span class="p-float-label p-input-icon-left">
         <i class="pi pi-pencil"></i>
-        <input formControlName="count" type="text" id="inputgroup" pInputText [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('count')}">
-        <label for="inputgroup">Usuario</label>
+        <input formControlName="name" type="text" id="inputgroup" pInputText [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('name')}">
+        <label for="inputgroup">Nombre</label>
       </span>
 
       <span class="p-float-label p-input-icon-left">
         <i class="pi pi-dollar"></i>
-        <input formControlName="count" type="text" id="inputgroup" pInputText [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('count')}">
-        <label for="inputgroup">Usuario</label>
+        <input formControlName="price" type="number" id="inputgroup" pInputText [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('price')}">
+        <label for="inputgroup">Precio</label>
       </span>
 
     </form>
@@ -20,7 +20,8 @@
 
     <ng-template pTemplate="footer">
         <div class="content-footer">
-          <p-button [disabled]="progress" label="Verificar" icon="pi pi-check"></p-button>
+          <p-button *ngIf="!modify" [disabled]="progress" (onClick)="addArticle()" label="Agregar" icon="pi pi-plus"></p-button>
+          <p-button *ngIf="modify" [disabled]="progress" (onClick)="updateArticle()" label="Actualizar" icon="pi pi-pencil"></p-button>
           <p-progressBar *ngIf="progress"  mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
         </div>
     </ng-template>

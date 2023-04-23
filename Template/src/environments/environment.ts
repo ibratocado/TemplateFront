@@ -8,6 +8,12 @@ export const environment = {
     "urlApi": "https://localhost:7067/api/",
     "account": {
       "postForVerify": "Account"
+    },
+    "artilcles": {
+      "getFullByPage": "Articuloes/All",
+      "add": "Articuloes/Insert",
+      "update": "Articuloes/Update",
+      "delete": "Articuloes/Delete"
     }
   }
 };
