@@ -82,11 +82,12 @@ export class FormComponent implements OnInit {
     }
     this.progress = true; this.progress = true;
 
-    let model: IArticleAddResquest = {
+    let model: IArticleRespon = {
+      id: this.modelUpdate.id,
       name: this.formData.controls['name'].value,
       price: this.formData.controls['price'].value
     }
-    this.articleService.add(model).then(data=>{
+    this.articleService.update(model).then(data=>{
       this.messageService.add({severity: "success", summary:"Satisfactorio", detail: data.respon.message});
       this.progress = false;
       this.ref.close(2);

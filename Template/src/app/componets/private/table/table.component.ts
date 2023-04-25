@@ -122,7 +122,6 @@ export class TableComponent implements OnInit {
 
       if(data)
       {
-        this.page = 1;
         this.loadData();
       }
     });
