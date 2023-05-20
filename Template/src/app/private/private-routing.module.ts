@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TableComponent } from '../componets/private/table/table.component';
+import { ArticlesViewComponent } from '../componets/private/articles-view/articles-view.component';
 
 const routes: Routes = [
-  {path:"", component: TableComponent,pathMatch: "full"}
+  {path:"Articles", component: ArticlesViewComponent},
+  {path:"",redirectTo: "Articles" ,pathMatch: "full"}
 ];
 
 @NgModule({

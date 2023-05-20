@@ -1,0 +1,58 @@
+<p-card header="Agregar Articulo" subheader="Complete el fomulario" [style]="{width: '360px'}" styleClass="p-card-shadow">
+  <form [formGroup]="form" style="display: grid; margin-top: 10px; margin-bottom: 10px; row-gap: 25px;" action="">
+    <span class="p-float-label">
+      <p-inputMask
+        mask="aaa-999"
+        inputId="inputmask"
+        formControlName="code"
+        [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('code')}">
+      </p-inputMask>
+      <label class="labelholder" for="inputgroup">Codigo</label>
+    </span>
+
+    <span class="p-float-label">
+      <input id="float-input"
+        type="text"
+        pInputText
+        formControlName="description"
+        [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('description')}">
+      <label for="float-input">Descripcion</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask
+        mask="999.99"
+        inputId="inputmask"
+        formControlName="price"
+        [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('price')}">
+      </p-inputMask>
+      <label class="labelholder" for="inputgroup">Precio</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-inputMask
+        mask="999"
+        inputId="inputmask"
+        formControlName="stock"
+        [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('stock')}">
+      </p-inputMask>
+      <label class="labelholder" for="inputgroup">Stock</label>
+    </span>
+  </form>
+
+  <div style="display: flex; gap: 5px;">
+    <p-fileUpload #fileUpload
+      mode="basic"
+      accept="image/*"
+      [customUpload]="true"
+      (uploadHandler)="onUploadImage($event)"
+      [auto]="true"
+      chooseLabel="Agregar Imagen">
+    </p-fileUpload>
+    <span>{{fileName}}</span>
+  </div>
+  <ng-template pTemplate="footer">
+      <p-button [disabled]="!buttonsEnable" label="Save" (onClick)="save()" icon="pi pi-check"></p-button>
+      <p-button label="Cancel" icon="pi pi-times" (onClick)="onClose()" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+  </ng-template>
+</p-card>

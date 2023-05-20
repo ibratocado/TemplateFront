@@ -16,3 +16,14 @@ export interface IGenericPaginator<T> {
   data: T
 }
 
+export interface IGenericPaginatorRequest {
+  id: string
+  page: number
+  recordsByPage: number
+}
+
+export interface IGenericPaginatorRequestN {
+  page: number
+  recordsByPage: number
+}
+

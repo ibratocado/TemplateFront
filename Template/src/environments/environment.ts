@@ -8,6 +8,29 @@ export const environment = {
     "urlApi": "https://localhost:7067/api/",
     "account": {
       "postForVerify": "Account"
+    },
+    "storeArticle": {
+      "base": "StoreArticle/",
+      "getByIdStore": "ById",
+    },
+    "store": {
+      "base": "Store/",
+      "getFull": "Full",
+      "getOneById": "OneById",
+    },
+    "customer": {
+      "base": "Customers/",
+      "getFull": "Full",
+      "getOneById": "OneById",
+    },
+    "article": {
+      "base": "Articles/",
+      "getFull": "Full",
+      "getOneById": "OneById",
+    },
+    "customerArticle": {
+      "base": "CustomerArticle/",
+      "getByIdCustomer": "ById",
     }
   }
 };

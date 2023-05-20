@@ -11,26 +11,45 @@ export class BaseService {
   private path = environment.urls.urlApi;
   constructor(private clientHttp: HttpClient) { }
 
-  get(url: string,optionsQuerry: any, optionsPath?: any): Promise<any>{
+  get(url: string): Promise<any>{
 
-    let final = `${url}/${optionsPath}`;
-
-    if(!optionsPath)
-      final = `${url}`;
-
-    return lastValueFrom( this.clientHttp.get(this.path + final,optionsQuerry));
+    let final = `${url}`;
+    return lastValueFrom( this.clientHttp.get(this.path + final));
   }
 
-  post(url: string,required: any): Promise<any>{
+  getPath(url: string, optionsPath: any): Promise<any>{
+
+    let final = `${url}${optionsPath}`;
+
+    return lastValueFrom( this.clientHttp.get(this.path + final));
+  }
+
+  getQuery(url: string,optionsQuerry: any): Promise<any>{
+
+    let final = `${url}`;
+
+    return lastValueFrom( this.clientHttp.get(this.path + final,{params: optionsQuerry}));
+  }
+
+  postBody(url: string,required: any): Promise<any>{
     return lastValueFrom( this.clientHttp.post(this.path + url,required));
   }
 
-  put(url: string,required: any): Promise<any>{
+  postParams(url: string,required: any): Promise<any>{
+    return lastValueFrom( this.clientHttp.post(this.path + url,required,{params: required}));
+  }
+
+  putBody(url: string,required: any): Promise<any>{
     return lastValueFrom( this.clientHttp.put(this.path + url,required));
   }
 
-  delete(url: string): Promise<any>{
-    return lastValueFrom( this.clientHttp.delete(this.path + url));
+  putParams(url: string,required: any): Promise<any>{
+    return lastValueFrom( this.clientHttp.put(this.path + url,required,{params: required}));
+  }
+
+  delete(url: string,optionsPath: any): Promise<any>{
+    let final = `${url}${optionsPath}`;
+    return lastValueFrom( this.clientHttp.delete(this.path + final));
   }
 
 }

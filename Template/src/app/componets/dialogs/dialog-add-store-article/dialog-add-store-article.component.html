@@ -1,0 +1,42 @@
+<p-card header="Agregar Articulo A Tienda" subheader="Complete el fomulario" [style]="{width: '360px'}" styleClass="p-card-shadow">
+  <div style="display: grid; justify-content: center; align-items: center;gap: 5px;">
+    <div style="display: flex; gap: 30px; justify-content: center;">
+      <span>
+        Tienda
+        <p-autoComplete
+                [(ngModel)]="storeName"
+                [suggestions]="filteredStores"
+                (completeMethod)="onFilterStore($event)"
+                field="branch"
+                [dropdown]="true"
+                [forceSelection]="true"
+                (onSelect)="onSelectStore($event)">
+                <ng-template let-store pTemplate="item">
+                    <div class="country-item">
+                        <div>{{store.branch}}</div>
+                    </div>
+                </ng-template>
+        </p-autoComplete>
+      </span>
+
+      <span>
+        Articulo
+        <p-autoComplete
+                [(ngModel)]="articleName"
+                [suggestions]="filteredArticles"
+                (completeMethod)="onFilterArticle($event)"
+                field="description"
+                [dropdown]="true"
+                [forceSelection]="true"
+                (onSelect)="onSelectArticle($event)">
+                <ng-template let-article pTemplate="item">
+                    <div class="country-item">
+                        <div>{{article.description}}</div>
+                    </div>
+                </ng-template>
+        </p-autoComplete>
+      </span>
+    </div>
+    <p-button [disabled]="!buttonsEnable" label="Save" (onClick)="save()" icon="pi pi-check"></p-button>
+  </div>
+</p-card>

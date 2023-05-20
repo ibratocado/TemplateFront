@@ -12,6 +12,6 @@ export class AccountService {
 
   public postVerify(options: any): Promise<IGenericRespon<string>>{
     let url = environment.urls.account.postForVerify;
-    return this.baseService.post(url,options);
+    return this.baseService.postBody(url,options);
   }
 }

@@ -1,0 +1,32 @@
+<p-card>
+  <p-button label="Agregar Articulo" icon="pi pi-plus" (onClick)="onShowAddArticle()" class="mr-2"></p-button>
+  <p-table [value]="articlesList" [lazy]="true" (onLazyLoad)="loadArticles($event)" responsiveLayout="scroll" dataKey="id"
+    [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [loading]="loading" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Piezas</th>
+            <th>Image</th>
+            <th>Acciones</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+        <tr>
+            <td>{{item.code}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.stock}}</td>
+            <td><img style="width: 30px;height: 35px;"
+              [src]="'https://localhost:7067/' + item.image"
+              [alt]="item.description"/></td>
+            <td style="display: flex; gap: 10px;">
+              <p-button icon="pi pi-pencil" (onClick)="onShowUpdateArticle(item)" styleClass="p-button-success"></p-button>
+              <p-confirmPopup></p-confirmPopup>
+              <p-button icon="pi pi-trash" (onClick)="onDeleteArticle($event,item.id)" styleClass="p-button-danger"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+</p-card>

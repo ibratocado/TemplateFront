@@ -10,7 +10,7 @@ import {PasswordModule} from 'primeng/password';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { MessageService } from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
-
+import {ConfirmationService} from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,13 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { PrivateModule } from './private/private.module';
-import { FormComponent } from './componets/private/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SessionComponent,
-    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +37,12 @@ import { FormComponent } from './componets/private/form/form.component';
     ProgressBarModule,
     ToastModule,
     HttpClientModule,
-    PrivateModule
+    PrivateModule,
   ], // Se tiene que poner en provedoires el interceptor y el servicio de las cookies
   providers: [
     CookieService,
-    MessageService],
+    MessageService,
+    ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
