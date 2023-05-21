@@ -51,7 +51,6 @@ export class ArticlesAdminViewComponent implements OnInit, OnDestroy {
     let paginator: IGenericPaginatorRequestN = {page: this.page, recordsByPage: this.recordsByPage};
 
     this.articleService.getFull(paginator).then(data=>{
-      console.log("articles",data);
       this.articlesList =  data.data.data;
       this.totalRecords = data.data.totalRecords;
       setTimeout(() => {
@@ -99,7 +98,6 @@ export class ArticlesAdminViewComponent implements OnInit, OnDestroy {
   }
 
   public onDeleteArticle(event: any,id: string){
-    console.log(event);
     this.confirmationService.confirm({
       target: event.target,
       message: 'Seguro que quiere borrar esta Tienda?',

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IArticle, IStoreArticle, IStoreArticleAdd } from 'src/app/interfaces/articles';
@@ -32,7 +33,8 @@ export class DialogAddStoreArticleComponent implements OnInit {
     public config: DynamicDialogConfig,
     private storeService: StoreService,
     private messageService: MessageService,
-    private articlesService: ArticlesService
+    private articlesService: ArticlesService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -89,7 +91,6 @@ export class DialogAddStoreArticleComponent implements OnInit {
   }
 
   public onSelectArticle(event: any){
-    console.log(event);
     this.selectArticle = event;
   }
 
@@ -108,7 +109,6 @@ export class DialogAddStoreArticleComponent implements OnInit {
   }
 
   public onSelectStore(event: any){
-    console.log(event);
     this.selectStore = event;
   }
 
@@ -124,6 +124,9 @@ export class DialogAddStoreArticleComponent implements OnInit {
     };
     this.articlesService.addStoreArticle(model).then((data)=>{
       this.messageService.add({severity:"success",summary:"Satisfactorio", detail: data.message});
+
+      this.route.navigate(['/']);
+      this.ref.close();
     }).catch(()=>{
       this.messageService.add({severity:"error",summary:"Error", detail: "Error de servicios"});
       this.buttonsEnable = true;});

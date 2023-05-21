@@ -1,0 +1,10 @@
+<p-card header="Carrito" subheader="Dale a Compra y disfruta">
+  <div style="display: grid; grid-template-columns: repeat(1,1fr); margin-bottom: 10px;" *ngFor="let item of car">
+    <span>{{item.description}}</span>
+    <span>Precio: {{item.price}}</span>
+  </div>
+  <span style="border-right: 10px;">Total: {{total}}</span>
+  <ng-template pTemplate="footer" >
+    <p-button style="border-left: 10px;" [disabled]="!buttonsEnable" label="Save" (onClick)="save()" icon="pi pi-check"></p-button>
+  </ng-template>
+</p-card>

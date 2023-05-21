@@ -1,4 +1,6 @@
-<p-card>
+<p-toast position="top-center"></p-toast>
+<app-toolbar></app-toolbar>
+<p-card header="Tiendas">
   <p-button label="Agregar Tienda" icon="pi pi-plus" (onClick)="onShowAddStore()" class="mr-2"></p-button>
   <p-table [value]="storeList" [lazy]="true" (onLazyLoad)="loadStores($event)" responsiveLayout="scroll" dataKey="id"
     [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [loading]="loading" >

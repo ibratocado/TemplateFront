@@ -46,13 +46,11 @@ export class DialogUpdateArticleComponent implements OnInit {
 
     this.form.patchValue(this.article);
     this.fileName = this.article.image.split("/")[2];
-    console.log(this.fileName);
 
   }
 
   public onUploadImage(event: any){
     for(let file of event.files) {
-      console.log(file);
       this.file = file;
       this.form.controls["image"].setValue(file.name);
       this.fileName = file.name;
@@ -61,7 +59,6 @@ export class DialogUpdateArticleComponent implements OnInit {
   }
 
   public validFormDataControl(control: string){
-    console.log("fomrValid",this.form.controls[control].valid);
     return this.form.controls[control].valid;
   }
 
@@ -81,13 +78,12 @@ export class DialogUpdateArticleComponent implements OnInit {
       stock: Number(this.form.controls["stock"].value),
       image: this.file
     };
-    console.log(model);
     this.articleService.updateArticle(model).then(data=>{
-      console.log(data.data);
       this.messageService.add({severity:"success",summary:"Satisfactorio", detail: data.message});
       this.buttonsEnable = true;
       this.form.reset();
       this.closes = 2;
+      this.ref.close(this.closes);
     }).catch(()=>{
       this.messageService.add({severity:"error",summary:"Error", detail: "Error de servicios"});
       this.buttonsEnable = true;

@@ -22,6 +22,7 @@ export class ArticlesViewComponent implements OnInit {
   public totalRecords: number = 0;
   private page: number = 0;
   private recordsByPage: number = 9;
+  public carShi: number = 0;
 
   constructor(
     private articleService: ArticlesService,
@@ -104,9 +105,29 @@ export class ArticlesViewComponent implements OnInit {
   }
 
   public selectStore(event: any){
-    console.log(event);
+
     this.storeSelected = event;
     this.loadArticles();
+  }
+
+  public addCar(data: IStoreArticle){
+    let car = localStorage.getItem('shippinCar');
+    let shipping: IArticle[] = [];
+
+    if(car){
+      shipping = JSON.parse(car);
+    }
+
+    if(shipping.includes(data.articleNavigation)){
+      this.messageService.add({severity:"warn",summary:"Advertencia", detail: "Producto ya agregado solo se puede una pieza"});
+      return;
+    }
+
+    shipping.push(data.articleNavigation);
+    this.carShi = shipping.length;
+    localStorage.setItem('shippinCar',JSON.stringify(shipping));
+    this.messageService.add({severity:"success",summary:"Satisfactorio", detail: "Producto Agregado"});
+
   }
 
 }

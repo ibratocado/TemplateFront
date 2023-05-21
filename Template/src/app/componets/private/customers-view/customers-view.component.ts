@@ -4,8 +4,6 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { ICustomer } from 'src/app/interfaces/customer';
 import { IGenericPaginatorRequestN } from 'src/app/interfaces/generic';
 import { CustomerService } from 'src/app/services/customer.service';
-import { DialogAddCustomerComponent } from '../../dialogs/dialog-add-customer/dialog-add-customer.component';
-import { DialogUpdateCustomerComponent } from '../../dialogs/dialog-update-customer/dialog-update-customer.component';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -53,7 +51,6 @@ export class CustomersViewComponent implements OnInit, OnDestroy {
     let paginator: IGenericPaginatorRequestN = {page: this.page, recordsByPage: this.recordsByPage};
 
     this.customerService.getFull(paginator).then(data=>{
-      console.log("articles",data);
       this.customerList =  data.data.data;
       this.totalRecords = data.data.totalRecords;
       setTimeout(() => {
@@ -67,7 +64,7 @@ export class CustomersViewComponent implements OnInit, OnDestroy {
     });
   }
 
-  public onShowAddCustomer(){
+  /*public onShowAddCustomer(){
     const ref = this.dialogService.open(DialogAddCustomerComponent,{
       modal: true,
       width: 'auto'
@@ -111,6 +108,6 @@ export class CustomersViewComponent implements OnInit, OnDestroy {
       },
     });
 
-  }
+  }*/
 
 }

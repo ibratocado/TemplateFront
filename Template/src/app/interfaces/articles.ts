@@ -46,11 +46,19 @@ export interface IStoreArticleUpdate {
 
 export interface ICustomerArticleAdd {
   cuatomer: string
+  articles: string[]
+}
+
+export interface ICustomerArticle {
+  id: string
+  cuatomer: string
   article: string
+  date: Date
+  articleNavigation: IArticle
 }
 
 export interface ICustomerArticleUpdate {
   id: string
   cuatomer: string
-  article: string
+  articles: string[]
 }

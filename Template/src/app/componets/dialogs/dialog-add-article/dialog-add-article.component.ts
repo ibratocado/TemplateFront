@@ -36,7 +36,6 @@ export class DialogAddArticleComponent implements OnInit {
 
   public onUploadImage(event: any){
     for(let file of event.files) {
-      console.log(file);
       this.file = file;
       this.form.controls["image"].setValue(file.name);
       this.fileName = file.name;
@@ -45,7 +44,6 @@ export class DialogAddArticleComponent implements OnInit {
   }
 
   public validFormDataControl(control: string){
-    console.log("fomrValid",this.form.controls[control].valid);
     return this.form.controls[control].valid;
   }
 
@@ -64,9 +62,7 @@ export class DialogAddArticleComponent implements OnInit {
       stock: Number(this.form.controls["stock"].value),
       image: this.file
     };
-    console.log(model);
     this.articleService.addArticle(model).then(data=>{
-      console.log(data.data);
       this.messageService.add({severity:"success",summary:"Satisfactorio", detail: data.message});
       this.buttonsEnable = true;
       this.form.reset();

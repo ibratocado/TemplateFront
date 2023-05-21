@@ -1,1 +1,25 @@
-<p>dialog-update-store works!</p>
+<p-card header="Modificar Tienda" subheader="Complete el fomulario" [style]="{width: '360px'}" styleClass="p-card-shadow">
+  <form [formGroup]="form" style="display: grid; margin-top: 10px; margin-bottom: 10px; row-gap: 25px;" action="">
+    <span class="p-float-label">
+      <input id="float-input"
+        type="text"
+        pInputText
+        formControlName="branch"
+        [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('branch')}">
+      <label for="float-input">Sucursal</label>
+    </span>
+    <span class="p-float-label">
+      <input id="float-input"
+        type="text"
+        pInputText
+        formControlName="addres"
+        [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('addres')}">
+      <label for="float-input">Dirrecion</label>
+    </span>
+  </form>
+
+  <ng-template pTemplate="footer">
+      <p-button [disabled]="!buttonsEnable" label="Save" (onClick)="save()" icon="pi pi-check"></p-button>
+      <p-button label="Cancel" icon="pi pi-times" (onClick)="onClose()" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+  </ng-template>
+</p-card>

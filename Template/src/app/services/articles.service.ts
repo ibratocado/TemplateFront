@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { IGenericPaginator, IGenericPaginatorRequest, IGenericPaginatorRequestN, IGenericStructRespon} from '../interfaces/generic';
-import { IArticle, IArticleAdd, IArticleUpdate, ICustomerArticleAdd, ICustomerArticleUpdate, IStoreArticle, IStoreArticleAdd, IStoreArticleUpdate } from '../interfaces/articles';
+import { IArticle, IArticleAdd, IArticleUpdate, ICustomerArticle, ICustomerArticleAdd, IStoreArticle, IStoreArticleAdd, IStoreArticleUpdate } from '../interfaces/articles';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -16,6 +16,7 @@ export class ArticlesService {
 
   private urlbase = environment.urls.storeArticle.base;
   private urlArticle = environment.urls.article.base;
+  private urlCustomer = environment.urls.customerArticle.base;
   public getForIdStore(paginator: IGenericPaginatorRequest):
   Promise<
     IGenericStructRespon<
@@ -75,11 +76,16 @@ export class ArticlesService {
   }
 
   public addCustomnerArticle(model: ICustomerArticleAdd): Promise<IGenericStructRespon<any>>{
-    return this.baseService.postBody(this.urlbase,model);
+    return this.baseService.postBody(this.urlCustomer,model);
   }
 
-  public updateCustomerArticle(model: ICustomerArticleUpdate): Promise<IGenericStructRespon<any>>{
-    return this.baseService.putBody(this.urlbase,model);
+  public updateCustomerArticle(model: IStoreArticleUpdate): Promise<IGenericStructRespon<any>>{
+    return this.baseService.putBody(this.urlCustomer,model);
+  }
+
+  public getArticlesByCustomer(id: string): Promise<IGenericStructRespon<ICustomerArticle[]>>{
+    let url = this.urlCustomer + environment.urls.customerArticle.getByIdCustomer;
+    return this.baseService.getPath(url,id);
   }
 
 }

@@ -7,6 +7,7 @@ import { DialogAddStoreArticleComponent } from '../../dialogs/dialog-add-store-a
 import { IStore } from 'src/app/interfaces/store';
 import { Subscription } from 'rxjs';
 import { DialogUpdateStoreComponent } from '../../dialogs/dialog-update-store/dialog-update-store.component';
+import { DialogAddStoreComponent } from '../../dialogs/dialog-add-store/dialog-add-store.component';
 
 @Component({
   selector: 'app-stores-view',
@@ -50,7 +51,6 @@ export class StoresViewComponent implements OnInit, OnDestroy {
     let paginator: IGenericPaginatorRequestN = {page: this.page, recordsByPage: this.recordsByPage};
 
     this.storeService.getFull(paginator).then(data=>{
-      console.log("articles",data);
       this.storeList =  data.data.data;
       this.totalRecords = data.data.totalRecords;
       setTimeout(() => {
@@ -65,7 +65,7 @@ export class StoresViewComponent implements OnInit, OnDestroy {
   }
 
   public onShowAddStore(){
-    const ref = this.dialogService.open(DialogAddStoreArticleComponent,{
+    const ref = this.dialogService.open(DialogAddStoreComponent,{
       modal: true,
       width: 'auto'
     });
@@ -99,7 +99,6 @@ export class StoresViewComponent implements OnInit, OnDestroy {
   }
 
   public onDeleteStore(event: any,id: string){
-    console.log(event);
     this.confirmationService.confirm({
       target: event.target,
       message: 'Seguro que quiere borrar esta Tienda?',

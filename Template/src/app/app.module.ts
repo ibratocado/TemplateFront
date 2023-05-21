@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { PrivateModule } from './private/private.module';
+import { DialogShippingCarComponent } from './componets/dialogs/dialog-shipping-car/dialog-shipping-car.component';
+import { CustomersArticleViewComponent } from './componets/private/customers-article-view/customers-article-view.component';
 
 @NgModule({
   declarations: [

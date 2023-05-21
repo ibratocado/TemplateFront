@@ -1,79 +1,75 @@
 <p-toast position="top-center"></p-toast>
 
-<app-toolbar></app-toolbar>
+<app-toolbar
+[car]="carShi"></app-toolbar>
 
-<div class="card">
-  <div class="content-data-store">
-    <p-autoComplete
-              [(ngModel)]="storeName"
-              [suggestions]="filteredStores"
-              (completeMethod)="filterStore($event)"
-              field="branch"
-              [dropdown]="true"
-              [forceSelection]="true"
-              (onSelect)="selectStore($event)">
-              <ng-template let-store pTemplate="item">
-                  <div class="country-item">
-                      <div>{{store.branch}}</div>
-                  </div>
-              </ng-template>
-      </p-autoComplete>
-      <span *ngIf="storeSelected">Tienda: {{storeSelected.branch}}</span>
-      <span *ngIf="storeSelected">Direccion: {{storeSelected.addres}}</span>
+<p-card header="Comprar">
+  <div class="card">
+    <div class="content-data-store">
+      <p-autoComplete
+                [(ngModel)]="storeName"
+                [suggestions]="filteredStores"
+                (completeMethod)="filterStore($event)"
+                field="branch"
+                [dropdown]="true"
+                [forceSelection]="true"
+                (onSelect)="selectStore($event)">
+                <ng-template let-store pTemplate="item">
+                    <div class="country-item">
+                        <div>{{store.branch}}</div>
+                    </div>
+                </ng-template>
+        </p-autoComplete>
+        <span *ngIf="storeSelected && !proggres">Tienda: {{storeSelected.branch}}</span>
+        <span *ngIf="storeSelected && !proggres">Direccion: {{storeSelected.addres}}</span>
+    </div>
+    <p-dataView *ngIf="storeSelected" #dv [value]="products"
+      [paginator]="true"
+      [rows]="9"
+      layout="grid"
+      [lazy]="true"
+      (onLazyLoad)="loadArticles($event)"
+      [loading]="proggres"
+      [totalRecords]="totalRecords">
+        <ng-template pTemplate="header">
+            <div class="flex flex-column md:flex-row md:justify-content-between">
+              <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+        </ng-template>
+        <ng-template let-product pTemplate="listItem">
+            <div class="col-12">
+                <div class="product-list-item">
+                    <img style="width: 200px;height: 250px;"
+                    [src]="'https://localhost:7067/' + product.articleNavigation.image"
+                    [alt]="product.articleNavigation.description"/>
+                    <div class="product-list-detail">
+                        <div class="product-name">{{product.articleNavigation.description}}</div>
+                        <span>Piezas: {{product.articleNavigation.stock}}</span>
+                    </div>
+                    <div class="product-list-action">
+                        <span class="product-price">${{product.articleNavigation.price}}</span>
+                        <p-button (onClick)="addCar(product)" icon="pi pi-shopping-cart" label="Add to Cart"></p-button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-product pTemplate="gridItem">
+            <div class="col-12 md:col-4">
+                <div class="product-grid-item card">
+                    <div class="product-grid-item-content">
+                        <img style="width: 200px;height: 250px;"
+                        [src]="'https://localhost:7067/' + product.articleNavigation.image"
+                        [alt]="product.articleNavigation.description"/>
+                        <div class="product-name">{{product.articleNavigation.description}}</div>
+                        <span>Piezas: {{product.articleNavigation.stock}}</span>
+                    </div>
+                    <div class="product-grid-item-bottom">
+                        <span class="product-price">${{product.articleNavigation.price}}</span>
+                        <p-button (onClick)="addCar(product)" icon="pi pi-shopping-cart"></p-button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
   </div>
-  <p-dataView *ngIf="storeSelected" #dv [value]="products"
-    [paginator]="true"
-    [rows]="9"
-    layout="grid"
-    [lazy]="true"
-    (onLazyLoad)="loadArticles($event)"
-    [loading]="proggres"
-    [totalRecords]="totalRecords">
-      <ng-template pTemplate="header">
-          <div class="flex flex-column md:flex-row md:justify-content-between">
-            <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-          </div>
-      </ng-template>
-      <ng-template let-product pTemplate="listItem">
-          <div class="col-12">
-              <div class="product-list-item">
-                  <img style="width: 200px;height: 250px;"
-                  [src]="'https://localhost:7067/' + product.articleNavigation.image"
-                  [alt]="product.articleNavigation.description"/>
-                  <div class="product-list-detail">
-                      <div class="product-name">{{product.articleNavigation.description}}</div>
-                      <span>Piezas: {{product.articleNavigation.stock}}</span>
-                  </div>
-                  <div class="product-list-action">
-                      <span class="product-price">${{product.articleNavigation.price}}</span>
-                      <p-button icon="pi pi-shopping-cart" label="Add to Cart"></p-button>
-                  </div>
-              </div>
-          </div>
-      </ng-template>
-      <ng-template let-product pTemplate="gridItem">
-          <div class="col-12 md:col-4">
-              <div class="product-grid-item card">
-                  <div class="product-grid-item-content">
-                      <img style="width: 200px;height: 250px;"
-                      [src]="'https://localhost:7067/' + product.articleNavigation.image"
-                      [alt]="product.articleNavigation.description"/>
-                      <div class="product-name">{{product.articleNavigation.description}}</div>
-                      <span>Piezas: {{product.articleNavigation.stock}}</span>
-                  </div>
-                  <div class="product-grid-item-bottom">
-                      <span class="product-price">${{product.articleNavigation.price}}</span>
-                      <p-button icon="pi pi-shopping-cart"></p-button>
-                  </div>
-              </div>
-          </div>
-      </ng-template>
-  </p-dataView>
-</div>
-
-
-<app-articles-admin-view></app-articles-admin-view>
-
-<app-stores-view></app-stores-view>
-
-<app-customers-view></app-customers-view>
+</p-card>

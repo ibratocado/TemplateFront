@@ -1,11 +1,13 @@
 <p-toolbar>
   <div class="p-toolbar-group-left" style="gap: 5px;">
-      <p-button label="Agregar Cliente" icon="pi pi-plus" (onClick)="onShowAddArticle()" class="mr-2"></p-button>
-      <p-button label="Agregar Tienda" icon="pi pi-plus" (onClick)="onShowAddArticle()" class="mr-2"></p-button>
+      <p-button label="Comprar" icon="pi pi-shopping-cart" (onClick)="article()" class="mr-2"></p-button>
+      <p-button label="Mis Pedidos" icon="pi pi-chart-bar" (onClick)="orders()" class="mr-2"></p-button>
+      <p-button label="Tiendas" icon="pi pi-shopping-bag" (onClick)="stores()" class="mr-2"></p-button>
+      <p-button label="Articulos" icon="pi pi-database" (onClick)="articleAdmin()" class="mr-2"></p-button>
       <p-button label="Agregar Articulo a Tienda" icon="pi pi-plus" (onClick)="onShowAddStoreArticle()" class="mr-2"></p-button>
-      <p-button label="Upload" icon="pi pi-upload" styleClass="p-button-success"></p-button>
   </div>
   <div class="p-toolbar-group-right">
-    <p-button icon="pi pi-shopping-cart"></p-button>
+    <span style="margin-right: 20px;">Cliente: {{client}}</span>
+    <p-button badge="{{car}}" (onClick)="onShowCar()" icon="pi pi-shopping-cart"></p-button>
 </div>
 </p-toolbar>

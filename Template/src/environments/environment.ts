@@ -11,26 +11,26 @@ export const environment = {
     },
     "storeArticle": {
       "base": "StoreArticle/",
-      "getByIdStore": "ById",
+      "getByIdStore": "ById/",
     },
     "store": {
       "base": "Store/",
       "getFull": "Full",
-      "getOneById": "OneById",
+      "getOneById": "OneById/",
     },
     "customer": {
       "base": "Customers/",
       "getFull": "Full",
-      "getOneById": "OneById",
+      "getOneById": "OneById/",
     },
     "article": {
       "base": "Articles/",
       "getFull": "Full",
-      "getOneById": "OneById",
+      "getOneById": "OneById/",
     },
     "customerArticle": {
       "base": "CustomerArticle/",
-      "getByIdCustomer": "ById",
+      "getByIdCustomer": "ById/",
     }
   }
 };

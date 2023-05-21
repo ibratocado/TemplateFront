@@ -1,4 +1,6 @@
-<p-card>
+<p-toast position="top-center"></p-toast>
+<app-toolbar></app-toolbar>
+<p-card header="Articulos">
   <p-button label="Agregar Articulo" icon="pi pi-plus" (onClick)="onShowAddArticle()" class="mr-2"></p-button>
   <p-table [value]="articlesList" [lazy]="true" (onLazyLoad)="loadArticles($event)" responsiveLayout="scroll" dataKey="id"
     [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [loading]="loading" >

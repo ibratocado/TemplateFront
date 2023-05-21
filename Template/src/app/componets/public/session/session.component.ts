@@ -62,12 +62,12 @@ export class SessionComponent implements OnInit {
     {
       let helper = new JwtHelperService();
       let decode = helper.decodeToken(data);
-      console.log(decode);
 
       this.cookieService.set('token', data);
       this.cookieService.set('role',decode.Role);
       this.cookieService.set('count',decode.nameid);
-      this.route.navigate(['/Private']);
+      this.cookieService.set('client',decode.Client);
+      this.route.navigate(['/']);
       this.progress = false;
     }
   }

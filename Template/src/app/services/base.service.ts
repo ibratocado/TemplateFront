@@ -19,7 +19,7 @@ export class BaseService {
 
   getPath(url: string, optionsPath: any): Promise<any>{
 
-    let final = `${url}${optionsPath}`;
+    let final = `${url}`+`${optionsPath}`;
 
     return lastValueFrom( this.clientHttp.get(this.path + final));
   }
