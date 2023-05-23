@@ -19,13 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { PrivateModule } from './private/private.module';
-import { FormComponent } from './componets/private/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SessionComponent,
-    FormComponent
+    SessionComponent
   ],
   imports: [
     BrowserModule,

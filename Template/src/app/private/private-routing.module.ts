@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TableComponent } from '../componets/private/table/table.component';
+import { PrivateComponent } from './private.component';
 
 const routes: Routes = [
-  {path:"", component: TableComponent,pathMatch: "full"}
+  //Para componenetes base debemos poner como parde el componente y como hijos los q se routearan dentro
+  {path: '',component: PrivateComponent, children:[
+    {path: 'Template',loadChildren: () => import('./template/template.module').
+                                  then(n => n.TemplateModule)},
+  ]}
 ];
 
 @NgModule({
