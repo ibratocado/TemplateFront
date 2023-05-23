@@ -9,7 +9,8 @@ const routes: Routes = [
   {path:'',component: TemplateComponent,children:[
     {path:'Form',component:FormComponent},
     {path:'List',component:ListComponent},
-    {path:'Table',component:TableComponent}
+    {path:'Table',component:TableComponent},
+    {path:'',redirectTo:'List',pathMatch:'full'}
   ]}
 ];
 

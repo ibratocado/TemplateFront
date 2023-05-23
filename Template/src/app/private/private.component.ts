@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-private',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
+  public onShowForm(){
+    this.router.navigate(['/Template/Form']);
+  }
+
+  public onShowList(){
+    this.router.navigate(['/Template/List']);
+  }
+
+  public onShowTable(){
+    this.router.navigate(['/Template/Table']);
+  }
 }
+

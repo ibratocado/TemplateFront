@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: '',component: PrivateComponent, children:[
     {path: 'Template',loadChildren: () => import('./template/template.module').
                                   then(n => n.TemplateModule)},
+    {path:'',pathMatch:'full', redirectTo: 'Template'}
   ]}
 ];
 
