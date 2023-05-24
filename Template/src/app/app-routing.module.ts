@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SessionComponent } from './componets/public/session/session.component';
 
 const routes: Routes = [
-  {path: "Login", component: SessionComponent, pathMatch: 'full'},
+  {path: 'Public',loadChildren: () => import('./componets/public/public.module').
+                                  then(n => n.PublicModule)},
+  {path:'',redirectTo:'Public',pathMatch:'full'},
   {path: 'Private',loadChildren: () => import('./private/private.module').
                                   then(n => n.PrivateModule)},
 ];

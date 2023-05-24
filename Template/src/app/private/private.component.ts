@@ -13,6 +13,7 @@ export class PrivateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("tamos en el private")
   }
 
   public onShowForm(){

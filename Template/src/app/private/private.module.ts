@@ -7,6 +7,9 @@ import {ButtonModule} from 'primeng/button';
 
 import { PrivateRoutingModule } from './private-routing.module';
 import { PrivateComponent } from './private.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtBearerInterceptor } from '../interceptors/jwt-bearer.interceptor';
+import { TemplateModule } from './template/template.module';
 
 
 @NgModule({
@@ -15,9 +18,17 @@ import { PrivateComponent } from './private.component';
   ],
   imports: [
     CommonModule,
+    TemplateModule,
     PrivateRoutingModule,
     ToolbarModule,
-    ButtonModule
+    ButtonModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtBearerInterceptor,
+      multi: true
+    }
   ]
 })
 export class PrivateModule { }

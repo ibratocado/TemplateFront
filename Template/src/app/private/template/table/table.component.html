@@ -1,1 +1,37 @@
-<p>table works!</p>
+<p-table [value]="list"
+  [lazy]="true"
+  (onLazyLoad)="load($event)"
+  responsiveLayout="scroll"
+  dataKey="id"
+  [selection]="listSelected"
+  (selectionChange)="onSelectionChange($event)"
+  [selectAll]="selectAll"
+  (selectAllChange)="onSelectionAllChange($event)"
+  [paginator]="true"
+  [rows]="recordsByPage"
+  [totalRecords]="totalRecords"
+  [loading]="loading"
+  [globalFilterFields]="['name','country.name', 'company', 'representative.name']">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem"></th>
+            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+            <th pSortableColumn="country.name">Country <p-sortIcon field="country.name"></p-sortIcon></th>
+            <th pSortableColumn="company">Company <p-sortIcon field="company"></p-sortIcon></th>
+            <th pSortableColumn="representative.name">Representative <p-sortIcon field="representative.name"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer>
+        <tr>
+            <td>
+                <p-tableCheckbox [value]="customer"> </p-tableCheckbox>
+            </td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.country.name}}</td>
+            <td>{{customer.company}}</td>
+            <td>{{customer.representative.name}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+

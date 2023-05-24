@@ -6,6 +6,8 @@ import { TemplateComponent } from '../template/template.component';
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
 import { TableComponent } from './table/table.component';
+import { TableModule } from 'primeng/table';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { TableComponent } from './table/table.component';
   ],
   imports: [
     CommonModule,
-    TemplateRoutingModule
+    TemplateRoutingModule,
+    TableModule,
+    CheckboxModule
   ]
 })
 export class TemplateModule { }

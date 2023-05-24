@@ -11,8 +11,7 @@ const routes: Routes = [
     {path:'List',component:ListComponent},
     {path:'Table',component:TableComponent},
     {path:'',redirectTo:'List',pathMatch:'full'}
-  ]}
-];
+  ]}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
