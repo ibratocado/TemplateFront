@@ -1,1 +1,34 @@
-<p>form works!</p>
+<p-card header="Advanced Card" subheader="Card Subheader">
+  <form class="container-form">
+
+    <span class="p-float-label">
+      <input type="text" id="inputText" pInputText >
+      <label for="inputText">InputText</label>
+    </span>
+
+    <span class="p-float-label">
+      <input type="text" id="inputName" pInputText  pKeyFilter="alpha">
+      <label for="inputName">InputName</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-calendar selectionMode="range" [readonlyInput]="true" inputId="inputCalendarRange"></p-calendar>
+      <label for="inputCalendarRange">InputCalendarRange</label>
+    </span>
+
+    <span class="p-float-label">
+      <input type="text" id="inputInt" pInputText  pKeyFilter="int">
+      <label for="inputInt">InputInt</label>
+    </span>
+
+    <span class="p-float-label">
+      <input type="text" id="inputFloat" pInputText  pKeyFilter="pnum">
+      <label for="inputFloat">InputFloat+</label>
+    </span>
+
+  </form>
+  <ng-template pTemplate="footer">
+    <p-button label="Save" icon="pi pi-check"></p-button>
+    <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+</ng-template>
+</p-card>
