@@ -5,9 +5,18 @@
 export const environment = {
   production: false,
   urls:{
-    "urlApi": "https://localhost:7067/api/",
+    "urlApi": "https://localhost:7008/api/",
     "account": {
       "postForVerify": "Account"
+    },
+    "users": {
+      "base": "Users",
+      "getPaginator": "/GetPage",
+      "getByID": "/GetById",
+      "deleteLogic": "/DeleteLogic"
+    },
+    "rols": {
+      "base": "Rols"
     }
   }
 };

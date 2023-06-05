@@ -3,5 +3,10 @@ export interface IAccountRequest {
   pount: string
 }
 
+export interface IRolRespon{
+  id: string
+  name: string
+}
+
 
 

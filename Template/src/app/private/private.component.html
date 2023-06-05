@@ -1,14 +1,12 @@
 <p-toolbar>
-  <div class="p-toolbar-group-left">
-      <p-button label="Form" (onClick)="onShowForm()" icon="pi pi-upload" styleClass="p-button-success"></p-button>
-      <p-button label="List" (onClick)="onShowList()" icon="pi pi-upload" styleClass="p-button-success"></p-button>
-      <p-button label="Table" (onClick)="onShowTable()" icon="pi pi-upload" styleClass="p-button-success"></p-button>
+  <div class="p-toolbar-group-left" style="gap: 5px;">
+      <p-button label="Agregar" (onClick)="onShowForm()" icon="pi pi-plus" styleClass="p-button-success"></p-button>
+      <!--<p-button label="List" (onClick)="onShowList()" icon="pi pi-upload" styleClass="p-button-success"></p-button>-->
+      <p-button label="Table" (onClick)="onShowTable()" icon="pi pi-list" styleClass="p-button-success"></p-button>
   </div>
+  <span>{{count}}</span>
   <div class="p-toolbar-group-right">
-      <p-button icon="pi pi-search" class="mr-2"></p-button>
-      <p-button icon="pi pi-calendar" styleClass="p-button-success mr-2"></p-button>
       <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
   </div>
 </p-toolbar>
-hola privado
 <router-outlet></router-outlet>

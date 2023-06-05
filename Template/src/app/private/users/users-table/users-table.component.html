@@ -1,0 +1,45 @@
+<p-toast position="top-center" ></p-toast>
+<p-confirmPopup></p-confirmPopup>
+<p-table [value]="list"
+  [lazy]="true"
+  (onLazyLoad)="load($event)"
+  responsiveLayout="scroll"
+  dataKey="id"
+  [selection]="listSelected"
+  (selectionChange)="onSelectionChange($event)"
+  [selectAll]="selectAll"
+  (selectAllChange)="onSelectionAllChange($event)"
+  [paginator]="true"
+  [rows]="recordsByPage"
+  [totalRecords]="totalRecords"
+  [loading]="loading">
+    <ng-template pTemplate="header">
+        <tr>
+          <th>Usuario</th>
+          <th>Rol</th>
+          <th>CURP</th>
+          <th>Paterno</th>
+          <th>Materno</th>
+          <th>Nombre</th>
+          <th>Salario</th>
+          <th>Telefono</th>
+          <th>Acciones</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
+        <tr>
+            <td>{{data.acount}}</td>
+            <td>{{data.role}}</td>
+            <td>{{data.curp}}</td>
+            <td>{{data.lastName}}</td>
+            <td>{{data.secondLastName}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.salary}}</td>
+            <td>{{data.phone}}</td>
+            <td>
+              <p-button icon="pi pi-user-edit" (onClick)="onUpdate(data)" styleClass="p-button-success"></p-button>
+              <p-button icon="pi pi-trash" (onClick)="onDelete($event,data.id)" styleClass="p-button-danger"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

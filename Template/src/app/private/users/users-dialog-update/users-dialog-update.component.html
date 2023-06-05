@@ -1,0 +1,63 @@
+<p-toast position="top-center"></p-toast>
+<div style="display: flex;align-items: center;justify-content: center;">
+  <p-card subheader="Llene los datos correctamente">
+    <form [formGroup]="formUser" style="display: flex;">
+
+      <div>
+        <span class="p-float-label" style="margin: 30px;" >
+          <input pInputText formControlName="curp" id="inputCurp"
+          [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('curp')}">
+          <label for="inputCurp">CURP</label>
+        </span>
+        <span class="p-float-label" style="margin: 30px;">
+          <input formControlName="name" type="text" id="inputCurp" pInputText
+          [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('name')}">
+          <label for="inputCurp">name</label>
+        </span>
+        <span class="p-float-label" style="margin: 30px;">
+          <input formControlName="lastName" type="text" id="inputLast" pInputText
+          [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('lastName')}">
+          <label for="inputLast">Apellido Paterno</label>
+        </span>
+        <span class="p-float-label" style="margin: 30px;">
+          <input formControlName="secondLastName" type="text" id="inputSecond" pInputText
+          [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('secondLastName')}">
+          <label for="inputSecond">Apellido Materno</label>
+        </span>
+        <span class="p-float-label" style="margin: 30px;">
+          <input formControlName="phone" type="text" id="inputPhone" pInputText pKeyFilter="int"
+          [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('phone')}">
+          <label for="inputPhone">Telefono</label>
+        </span>
+        <span class="p-float-label" style="margin: 30px;">
+          <input formControlName="salary" type="text" id="inputSalary" pInputText pKeyFilter="int"
+          [ngClass]="{'ng-invalid ng-dirty': validFormDataControl('salary')}">
+          <label for="inputSalary">Salario</label>
+        </span>
+      </div>
+
+      <div style="display: block;justify-content: center;row-gap: 30px; gap: 30px;">
+        <span class="p-float-label" style="margin: 30px;">
+          <p-autoComplete [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedRol"
+            [suggestions]="filteredRols"
+            (completeMethod)="filterRol($event)"
+            (onSelect)="onSelectRol($event)"
+            field="name"
+            [dropdown]="true">
+            <ng-template let-rol pTemplate="item">
+              <div class="country-item">
+                  <div>{{rol.name}}</div>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+          <label >Rol</label>
+        </span>
+        <div style="margin: 30px;float: right;">
+          <p-button label="Agregar" (onClick)="onAdd()" icon="pi pi-plus" styleClass="p-button-success"></p-button>
+        </div>
+      </div>
+
+    </form>
+  </p-card>
+
+</div>

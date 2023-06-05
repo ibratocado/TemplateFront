@@ -19,7 +19,8 @@ export class BaseService {
   }
 
   getQuery(url: string,options: any): Promise<any>{
-    return lastValueFrom( this.clientHttp.get(this.path + url,options));
+    console.log("options",options)
+    return lastValueFrom( this.clientHttp.get(this.path + url,{params: options}));
   }
 
   postBody(url: string,required: any): Promise<any>{
@@ -44,7 +45,7 @@ export class BaseService {
 
   deletePath(url: string,options: any): Promise<any>{
     let final = `${url}/${options}`;
-    return lastValueFrom( this.clientHttp.delete(this.path + url));
+    return lastValueFrom( this.clientHttp.delete(this.path + final));
   }
 
 }

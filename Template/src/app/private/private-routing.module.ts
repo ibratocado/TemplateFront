@@ -5,9 +5,9 @@ import { PrivateComponent } from './private.component';
 const routes: Routes = [
   //Para componenetes base debemos poner como parde el componente y como hijos los q se routearan dentro
   {path: '',component: PrivateComponent, children:[
-    {path: 'Template',loadChildren: () => import('./template/template.module').
-                                  then(n => n.TemplateModule)},
-    {path:'',pathMatch:'full', redirectTo: 'Template'}
+    {path: 'Users',loadChildren: () => import('./users/users.module').
+                                  then(n => n.UsersModule)},
+    {path:'',pathMatch:'full', redirectTo: 'Users'}
   ]}
 ];
 

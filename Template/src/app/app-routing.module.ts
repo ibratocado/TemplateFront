@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SessionGuard } from './guards/session.guard';
+import { LogginGuard } from './guards/loggin.guard';
 
 const routes: Routes = [
-  {path: 'Public',loadChildren: () => import('./componets/public/public.module').
+  {path: 'Public',canActivate: [LogginGuard],loadChildren: () => import('./componets/public/public.module').
                                   then(n => n.PublicModule)},
   {path:'',redirectTo:'Public',pathMatch:'full'},
-  {path: 'Private',loadChildren: () => import('./private/private.module').
+  {path: 'Private',canActivate: [SessionGuard],loadChildren: () => import('./private/private.module').
                                   then(n => n.PrivateModule)},
 ];
 

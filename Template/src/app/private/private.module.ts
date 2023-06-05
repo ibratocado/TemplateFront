@@ -18,7 +18,7 @@ import { TemplateModule } from './template/template.module';
   ],
   imports: [
     CommonModule,
-    TemplateModule,
+    //TemplateModule,
     PrivateRoutingModule,
     ToolbarModule,
     ButtonModule,

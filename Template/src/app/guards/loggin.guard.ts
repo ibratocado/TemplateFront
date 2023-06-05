@@ -6,25 +6,22 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
-export class SessionGuard implements CanActivate {
+export class LogginGuard implements CanActivate {
   constructor(private serviceCokie: CookieService,
     private router: Router
     ){}
-
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const cookie = this.serviceCokie.check('token');
-      if(!cookie){
+      if(cookie){
         console.log("tokenvalidate",cookie)
-        this.router.navigate(['Public/Login']);
+        this.router.navigate(['/Private']);
       }
       else{
         return true;
       }
-      this.router.navigate(['Public/Login']);
+      this.router.navigate(['/Private']);
     return false;
   }
 

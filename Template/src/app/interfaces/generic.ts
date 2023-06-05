@@ -19,6 +19,6 @@ export interface IGenericPaginator<T> {
 export interface IGenericPaginatorParameterRequest<T> {
   page: number
   recordsByPage: number
-  data: T
+  data?: T
 }
 

@@ -67,7 +67,7 @@ export class SessionComponent implements OnInit {
       this.cookieService.set('token', data);
       this.cookieService.set('role',decode.Role);
       this.cookieService.set('count',decode.nameid);
-      this.route.navigate(['/Private']);
+      this.route.navigate(['/Private/Users']);
       this.progress = false;
     }
   }
